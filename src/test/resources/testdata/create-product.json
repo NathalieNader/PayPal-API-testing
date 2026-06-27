@@ -1,0 +1,8 @@
+{
+  "name": "T-Shirt",
+  "type": "PHYSICAL",
+  "description": "Cotton XL",
+  "category": "CLOTHING",
+  "image_url": "https://example.com/gallary/images/1.jpg",
+  "home_url": "https://example.com/catalog/1.jpg"
+}
