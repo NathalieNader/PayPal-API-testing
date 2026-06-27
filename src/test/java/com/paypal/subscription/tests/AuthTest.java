@@ -15,8 +15,8 @@ public class AuthTest {
     @Test
     public void assertSuccessfulFetchingToken(){
         Response response = new AuthClient().fetchAccessToken();
-        assertEquals(response.getStatusCode(),200);
         response.then()
+                .statusCode(200)
                 .body("access_token",not(emptyOrNullString()))
                 .body("token_type",equalTo("Bearer"))
                 .body("expires_in",greaterThan(0)) ;
@@ -25,8 +25,7 @@ public class AuthTest {
     @Test
     public void assertInvalidCredentials(){
         Response response = new AuthClient().fetchAccessToken("invalid-client-id",Env.get("CLIENT_SECRET"));
-        assertEquals(response.getStatusCode(),401);
-        response.then()
+        response.then().statusCode(401)
                 .body("error", equalTo("invalid_client"))
                 .body("error_description", equalTo("Client Authentication failed"));
     }

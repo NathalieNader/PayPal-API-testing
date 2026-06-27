@@ -10,7 +10,7 @@ import static io.restassured.RestAssured.given;
 public class AuthClient {
 
     private String accessToken ;
-    private final String authEndpoint = "/v1/oauth2/token";
+    private final String authEndpoint = "oauth2/token";
     private final String baseUrl = Env.get("BASE_URL");
     private final String clientId = Env.get("CLIENT_ID");
     private final String clientSecret = Env.get("CLIENT_SECRET");
@@ -33,8 +33,9 @@ public class AuthClient {
         return fetchAccessToken(clientId,clientSecret);
     }
 
-    public void setAccessToken(){
+    public AuthClient setAccessToken(){
         accessToken = fetchAccessToken(clientId,clientSecret).path("access_token");
+        return this ;
     }
 
     public String getAccessToken(){
